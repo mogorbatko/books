@@ -12,14 +12,14 @@ import java.time.LocalDate;
 public class BookModel {
     @CsvBindByName
     private String isbn;
-    @CsvBindByName
-    private String title;
+    @CsvBindByName(column = "title")
+    private String book;
     @CsvBindByName(column = "series_title")
     private String seriesTitle;
     @CsvBindByName(column = "series_release_number")
     private String seriesReleaseNumber;
-    @CsvBindByName
-    private String authors;
+    @CsvBindByName(column = "authors")
+    private String author;
     @CsvBindByName
     private String publisher;
     @CsvBindByName
@@ -35,9 +35,9 @@ public class BookModel {
     @CsvCustomBindByName(column = "publication_date", converter = DateConverter.class)
     private LocalDate publicationDate;
     @CsvBindByName(column = "rating_score")
-    private double ratingScore;
+    private double rating;
     @CsvBindByName(column = "num_ratings")
-    private double numRatings;
+    private double numOfVoters;
     @CsvBindByName(column = "num_reviews")
     private double numReviews;
     @CsvBindByName(column = "current_readers")

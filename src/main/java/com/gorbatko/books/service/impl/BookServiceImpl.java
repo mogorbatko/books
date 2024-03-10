@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.gorbatko.books.condition.Column.AUTHORS;
+import static com.gorbatko.books.condition.Column.AUTHOR;
 import static com.gorbatko.books.condition.Column.NUM_PAGES;
-import static com.gorbatko.books.condition.Column.NUM_RATING;
+import static com.gorbatko.books.condition.Column.NUM_OF_VOTERS;
 import static com.gorbatko.books.condition.Column.PUBLICATION_DATE;
-import static com.gorbatko.books.condition.Column.RATING_SCORE;
-import static com.gorbatko.books.condition.Column.TITLE;
+import static com.gorbatko.books.condition.Column.RATING;
+import static com.gorbatko.books.condition.Column.BOOK;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -29,8 +29,8 @@ public class BookServiceImpl implements BookService {
     public List<BookModel> getTop10(Integer year, String column, String sort) throws ValidationException {
         if (!Column.isExist(column)) {
             throw new ValidationException(String.format("Invalid column value! Column can take following values: %s, %s, %s, %s, %s, %s",
-                    TITLE.getName(), AUTHORS.getName(), NUM_PAGES.getName(), PUBLICATION_DATE.getName(),
-                    RATING_SCORE.getName(), NUM_RATING.getName()));
+                    BOOK.getName(), AUTHOR.getName(), NUM_PAGES.getName(), PUBLICATION_DATE.getName(),
+                    RATING.getName(), NUM_OF_VOTERS.getName()));
         }
         if (!Sort.isExist(sort)) {
             throw new ValidationException("Invalid sort value! Parameter sort should contains only ASC or DESC value");

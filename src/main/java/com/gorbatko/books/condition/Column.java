@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 import static com.gorbatko.books.condition.Sort.DESC;
 
 public enum Column {
-    TITLE("title", Comparator.comparing(BookModel::getTitle), book -> book.getTitle() != null),
-    AUTHORS("authors", Comparator.comparing(BookModel::getAuthors), book -> book.getAuthors() != null),
+    BOOK("book", Comparator.comparing(BookModel::getBook), book -> book.getBook() != null),
+    AUTHOR("author", Comparator.comparing(BookModel::getAuthor), book -> book.getAuthor() != null),
     NUM_PAGES("numPages", Comparator.comparing(BookModel::getNumPages), book -> book.getNumPages() != 0),
     PUBLICATION_DATE("publicationDate", Comparator.comparing(BookModel::getPublicationDate), book -> book.getPublicationDate() != null),
-    RATING_SCORE("ratingScore", Comparator.comparing(BookModel::getRatingScore), book -> true),
-    NUM_RATING("numRatings", Comparator.comparing(BookModel::getNumRatings), book -> true);
+    RATING("rating", Comparator.comparing(BookModel::getRating), book -> true),
+    NUM_OF_VOTERS("numOfVoters", Comparator.comparing(BookModel::getNumOfVoters), book -> true);
 
     private static final Set<String> NAMES = Arrays.stream(values())
             .map(Column::getName)
