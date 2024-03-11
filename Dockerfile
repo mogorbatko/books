@@ -7,6 +7,6 @@ RUN gradle clean build
 FROM amazoncorretto:17
 WORKDIR /root/
 COPY --from=BUILD_IMAGE /root/dev/books/dataset ./dataset
-COPY --from=BUILD_IMAGE /root/dev/books/config.ini .
+COPY --from=BUILD_IMAGE /root/dev/books/config ./config
 COPY --from=BUILD_IMAGE /root/dev/books/build/libs/books-0.0.1-SNAPSHOT.jar .
 CMD ["java", "-jar", "books-0.0.1-SNAPSHOT.jar"]

@@ -27,7 +27,7 @@ public class BookModel {
     @CsvBindByName
     private String description;
     @CsvCustomBindByName(column = "num_pages", converter = IntegerConverter.class)
-    private int numPages;
+    private Integer numPages;
     @CsvBindByName
     private String format;
     @CsvBindByName

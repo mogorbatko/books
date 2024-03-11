@@ -1,12 +1,10 @@
 package com.gorbatko.books.controller;
 
-import com.gorbatko.books.condition.Column;
-import com.gorbatko.books.exception.checked.ValidationException;
+import com.gorbatko.books.exception.ValidationRuntimeException;
 import com.gorbatko.books.model.BookModel;
 import com.gorbatko.books.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
@@ -46,7 +44,7 @@ public class BookController {
                                                     @Max(value = 9999, message = "Year must be a 4-digit number")
                                                     Integer year,
                                                     @RequestParam String column,
-                                                    @RequestParam String sort) throws ValidationException {
+                                                    @RequestParam String sort) throws ValidationRuntimeException {
         return ResponseEntity.status(200).body(bookService.getTop10(year, column, sort));
     }
 }

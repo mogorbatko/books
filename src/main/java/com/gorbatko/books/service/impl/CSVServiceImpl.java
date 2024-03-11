@@ -1,6 +1,6 @@
 package com.gorbatko.books.service.impl;
 
-import com.gorbatko.books.exception.unchecked.CSVServiceRuntimeException;
+import com.gorbatko.books.exception.CSVServiceRuntimeException;
 import com.gorbatko.books.model.BookModel;
 import com.gorbatko.books.service.CSVService;
 import com.opencsv.bean.CsvToBeanBuilder;

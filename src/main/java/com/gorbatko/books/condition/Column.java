@@ -14,10 +14,10 @@ import static com.gorbatko.books.condition.Sort.DESC;
 public enum Column {
     BOOK("book", Comparator.comparing(BookModel::getBook), book -> book.getBook() != null),
     AUTHOR("author", Comparator.comparing(BookModel::getAuthor), book -> book.getAuthor() != null),
-    NUM_PAGES("numPages", Comparator.comparing(BookModel::getNumPages), book -> book.getNumPages() != 0),
+    NUM_PAGES("numPages", Comparator.comparing(BookModel::getNumPages), book -> book.getNumPages() != null),
     PUBLICATION_DATE("publicationDate", Comparator.comparing(BookModel::getPublicationDate), book -> book.getPublicationDate() != null),
     RATING("rating", Comparator.comparing(BookModel::getRating), book -> true),
-    NUM_OF_VOTERS("numOfVoters", Comparator.comparing(BookModel::getNumOfVoters), book -> true);
+    NUM_OF_VOTERS("numberOfVoters", Comparator.comparing(BookModel::getNumOfVoters), book -> true);
 
     private static final Set<String> NAMES = Arrays.stream(values())
             .map(Column::getName)
@@ -29,7 +29,7 @@ public enum Column {
     private static final Map<String, Predicate<BookModel>> PREDICATE_MAP = Arrays.stream(values())
             .collect(Collectors.toMap(Column::getName, Column::getPredicate));
 
-    public static Comparator<BookModel> apply(String column, String sort) {
+    public static Comparator<BookModel> of(String column, String sort) {
         if (DESC.name().equals(sort)) {
             return COMPARATOR_MAP.get(column).reversed();
         } else {

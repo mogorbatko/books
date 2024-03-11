@@ -7,12 +7,10 @@ public class IntegerConverter extends AbstractBeanField<Integer, String> {
 
     @Override
     protected Object convert(String value) {
-        if (StringUtils.isBlank(value)) {
+        if (StringUtils.isBlank(value) || !StringUtils.isNumeric(value)) {
             return null;
-        } else if (StringUtils.isNumeric(value)) {
-            return Integer.parseInt(value);
         } else {
-            return 0;
+            return Integer.parseInt(value);
         }
     }
 }

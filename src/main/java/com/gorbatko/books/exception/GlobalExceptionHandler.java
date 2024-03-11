@@ -1,6 +1,5 @@
 package com.gorbatko.books.exception;
 
-import com.gorbatko.books.exception.checked.ValidationException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ public class GlobalExceptionHandler {
                 .body("Internal server error occurred: " + e.getMessage());
     }
 
-    @ExceptionHandler({ValidationException.class, ConstraintViolationException.class})
+    @ExceptionHandler({ValidationRuntimeException.class, ConstraintViolationException.class})
     public ResponseEntity<String> handleValidationExceptions(Exception e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
